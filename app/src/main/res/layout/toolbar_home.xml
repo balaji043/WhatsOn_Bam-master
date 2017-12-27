@@ -18,13 +18,5 @@
         android:layout_centerVertical="true"
         android:textSize="18sp"
         android:text="@string/home"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/share"
-        android:padding="@dimen/dp4"
-        android:id="@+id/button"
-        android:background="@color/lightblue"
-        android:layout_alignParentEnd="true"/>
 </RelativeLayout>
 </android.support.v7.widget.Toolbar>

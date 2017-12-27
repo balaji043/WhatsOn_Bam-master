@@ -1,7 +1,7 @@
 package com.eventionlab.events.Presenter;
 
 import android.content.Context;
-import android.util.Log;
+import android.support.annotation.NonNull;
 
 import com.eventionlab.events.Adapter.EventAdapter;
 import com.eventionlab.events.Model.Event;
@@ -15,16 +15,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/**
- * Created by malavan on 22/12/17.
- */
 
 public class EventPresenter implements IEventPresenter
 {
 
 
     private EventView eventView;
-    private EventAdapter eventAdapter;
     private Context context;
     private Map<String,Event> eventMap;
 
@@ -53,14 +49,14 @@ public class EventPresenter implements IEventPresenter
         Call<Map<String,Event>> call = apiService.getAllEvent();
         call.enqueue(new Callback<Map<String, Event>>() {
             @Override
-            public void onResponse(Call<Map<String, Event>> call, Response<Map<String, Event>> response) {
+            public void onResponse(@NonNull Call<Map<String, Event>> call, @NonNull Response<Map<String, Event>> response) {
                eventMap = response.body();
                eventView.setAdapter(new EventAdapter(eventMap,context));
 
             }
 
             @Override
-            public void onFailure(Call<Map<String, Event>> call, Throwable t) {
+            public void onFailure(@NonNull Call<Map<String, Event>> call, @NonNull Throwable t) {
                 eventView.showNetworkError();
 
             }

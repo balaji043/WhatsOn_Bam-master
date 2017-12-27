@@ -3,13 +3,6 @@ package com.eventionlab.events.Model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.google.gson.annotations.Expose;
-
-
-/**
- * Created by malavan on 22/12/17.
- */
-
 public class Event implements Parcelable {
 
     private String ID;

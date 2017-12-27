@@ -6,11 +6,7 @@ import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
-import rx.Observable;
 
-/**
- * Created by malavan on 14/12/17.
- */
 
 public interface ApiInterface {
 

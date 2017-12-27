@@ -18,9 +18,8 @@ import com.eventionlab.events.Presenter.EventPresenter;
 import com.eventionlab.events.R;
 import com.eventionlab.events.View.EventView;
 
-import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
@@ -153,6 +152,11 @@ public class SingleActivity extends AppCompatActivity implements EventView{
         buttonTickets.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse(event.getWebsite()));
+                startActivity(intent);
             }
         });
         buttonCalender.setOnClickListener(new View.OnClickListener() {
@@ -164,7 +168,17 @@ public class SingleActivity extends AppCompatActivity implements EventView{
         buttonShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                try {
+                    Intent i = new Intent(Intent.ACTION_SEND);
+                    i.setType("text/plain");
+                    i.putExtra(Intent.EXTRA_SUBJECT, "My application name");
+                    String sAux = "\nLet me recommend you this application\n\n";
+                    sAux = sAux + "https://play.google.com/store/apps/details?id=Orion.Soft \n\n";
+                    i.putExtra(Intent.EXTRA_TEXT, sAux);
+                    startActivity(Intent.createChooser(i, "choose one"));
+                } catch(Exception e) {
+                    //e.toString();
+                }
             }
         });
         buttonRoute.setOnClickListener(new View.OnClickListener() {

@@ -12,7 +12,6 @@ import com.eventionlab.events.View.EventView;
 
 public class EventActivity extends AppCompatActivity implements EventView {
 
-
     RecyclerView recyclerviewEvent;
 
     private EventPresenter eventPresenter;

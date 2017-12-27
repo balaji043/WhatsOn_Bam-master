@@ -8,36 +8,29 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.eventionlab.events.Model.Event;
-import com.eventionlab.events.Model.GetDate;
 import com.eventionlab.events.R;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 import static com.eventionlab.events.Model.GetDate.getDate;
-
-/**
- * Created by malavan on 22/12/17.
- */
 
 public class EventViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
     @BindView(R.id.iv_event_image)
+    private
     ImageView imageviewEvent;
 
     @BindView(R.id.tv_event_start)
-    TextView textViewDateStart;
+    private TextView textViewDateStart;
     @BindView(R.id.tv_event_time)
-    TextView textview_event_timing;
+    private TextView textview_event_timing;
     @BindView(R.id.tv_event_name)
-    TextView textviewEventName;
+    private TextView textviewEventName;
 
-    String dateFormat = "mm:ss dd/MM/yyyy";
-    Context context;
     public EventViewHolder(View itemView) {
         super(itemView);
         itemView.setOnClickListener(this);
-        this.context = context;
+
         imageviewEvent          = itemView.findViewById(R.id.iv_event_image);
         textViewDateStart       = itemView.findViewById(R.id.tv_event_start);
         textview_event_timing   = itemView.findViewById(R.id.tv_event_time);
@@ -48,7 +41,8 @@ public class EventViewHolder extends RecyclerView.ViewHolder implements View.OnC
     {
         Glide.with(context).load(event.getImg_url()).into(imageviewEvent);
         Long l = Long.parseLong(event.getStartDate());
-        textViewDateStart.setText(getDate(l,dateFormat));
+        String dateFormat = "mm:ss dd/MM/yyyy";
+        textViewDateStart.setText(getDate(l, dateFormat));
         textviewEventName.setText(event.getEvent_name());
         textview_event_timing.setText(event.getID());
     }
